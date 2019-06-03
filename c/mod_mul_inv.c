@@ -29,13 +29,13 @@ uint64_t mod_mul_inverse_b2(uint64_t x, uint64_t bits, uint64_t *w)
                         qmul[2] = (result & 0xFFFFFFFF) * (x >> 32);
                         qmul[3] = (result >> 32) * (x & 0xFFFFFFFF);
                         carryin = 0;
-                        qmul[0] += __builtin_addcll(qmul[0], qmul[2] << 32, carryin, (unsigned long long *)&carryout);
+                        qmul[0] = __builtin_addcll(qmul[0], qmul[2] << 32, carryin, (unsigned long long *)&carryout);
                         carryin = carryout;
-                        qmul[1] += __builtin_addcll(qmul[1], qmul[2] >> 32, carryin, (unsigned long long *)&carryout);
+                        qmul[1] = __builtin_addcll(qmul[1], qmul[2] >> 32, carryin, (unsigned long long *)&carryout);
                         carryin = 0;
-                        qmul[0] += __builtin_addcll(qmul[0], qmul[3] << 32, carryin, (unsigned long long *)&carryout);
+                        qmul[0] = __builtin_addcll(qmul[0], qmul[3] << 32, carryin, (unsigned long long *)&carryout);
                         carryin = carryout;
-                        qmul[1] += __builtin_addcll(qmul[1], qmul[3] >> 32, carryin, (unsigned long long *)&carryout);
+                        qmul[1] = __builtin_addcll(qmul[1], qmul[3] >> 32, carryin, (unsigned long long *)&carryout);
                         if (bits == 64)
                         {
                                 *w = qmul[1];
