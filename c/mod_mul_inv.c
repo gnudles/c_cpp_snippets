@@ -1,6 +1,6 @@
 #include <stdint.h>
 //finds the modular multiplicative inverse of x over modulus of pow(2,bits)
-uint64_t find_mod_mul_inverse(uint64_t x, uint64_t bits, uint64_t *w)
+uint64_t mod_mul_inverse_b2(uint64_t x, uint64_t bits, uint64_t *w)
 {
         if (bits > 64 || bits == 0 || ((x & 1) == 0))
         {
